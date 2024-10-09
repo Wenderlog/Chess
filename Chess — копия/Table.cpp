@@ -10,7 +10,7 @@
 Cell::Cell(Coord coord): coord_(coord){}
 
 Colour EmptyCell::getColour() const{
-    return Colour::WHITE;
+    return Colour::white;
 }
 
 std::vector<Coord> EmptyCell::getHits() const{
@@ -20,5 +20,4 @@ std::vector<Coord> EmptyCell::getHits() const{
 std::string EmptyCell::Name() const{
     return "EMPTY";
 }
-
 

@@ -17,8 +17,8 @@ enum class Colour {
 };
 
 struct Coord {
-    size_t row;
-    size_t col;
+    size_t row = 8;
+    size_t col = 8;
 };
 
 /*! \brief Cell base class
@@ -43,14 +43,9 @@ public:
     std::string Name() const override;
 };
 
-class PawnCell : public Cell {
-private:
-    Colour getColour() const override;
-    std::vector<Coord> getHits() const override;
-    std::string Name() const override;
+class TableChess{
+    
 };
-
-class TableChess{};
 //Наследование, методы для различных фигур (стоим и хотим ударить, вывести координаты возможных ударов)
 //Добавить комментарии к интерфейсным методам
 //Standart Doxygen
