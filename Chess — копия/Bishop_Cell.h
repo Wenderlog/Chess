@@ -8,7 +8,7 @@
 #pragma once
 #include "Cell.h"
 
-constexpr std::string BishopName = "Bishop";
+constexpr std::string_view BishopName = "Bishop";
 
 /*!
  \class BishopCell
@@ -43,7 +43,7 @@ public:
      \return A vector of coordinates representing the cells the bishop attacks.
      */
     
-    std::vector<Coord> getHits() const override;
+    std::unordered_set<Coord> getHits() const override;
 
     /*!
      \brief Returns the name of the piece.
@@ -51,7 +51,7 @@ public:
      \return The name of the piece as a string.
      */
     
-    const std::string& Name() const override;
+    std::string_view Name() const override;
 
     /*!
      \brief Retrieves the list of valid moves for the bishop.
@@ -60,7 +60,7 @@ public:
      \return A vector of coordinates representing the cells the bishop can move to.
      */
     
-    std::vector<Coord> getReservedSteps() const override;
+    std::unordered_set<Coord> getReservedSteps() const override;
 
     /*!
      \brief Returns the symbol representing the bishop on the board.

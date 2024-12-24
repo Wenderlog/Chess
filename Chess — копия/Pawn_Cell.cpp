@@ -13,50 +13,50 @@ Colour PawnCell::getColour() const {
     return colour_;
 }
 
-std::vector<Coord> PawnCell::getHits() const {
-    std::vector<Coord> Hits;
+std::unordered_set<Coord> PawnCell::getHits() const {
+    std::unordered_set<Coord> Hits;
     if (colour_ == Colour::BLACK) {
         if(coord_.row > 0 && coord_.col > 0){
-            Hits.push_back({coord_.row - 1, coord_.col - 1});
+            Hits.insert({coord_.row - 1, coord_.col - 1});
         }
         if(coord_.row > 0 && coord_.col < 7) {
-            Hits.push_back({coord_.row - 1, coord_.col + 1});
+            Hits.insert({coord_.row - 1, coord_.col + 1});
         }
     }
     else {
         if(coord_.row < 7 && coord_.col > 0){
-            Hits.push_back({coord_.row + 1, coord_.col - 1});
+            Hits.insert({coord_.row + 1, coord_.col - 1});
         }
         if(coord_.row < 7 && coord_.col < 7) {
-            Hits.push_back({coord_.row + 1, coord_.col + 1});
+            Hits.insert({coord_.row + 1, coord_.col + 1});
         }
     }
     return Hits;
 }
 
-std::vector<Coord> PawnCell::getReservedSteps() const{
-    std::vector<Coord> moves;
+std::unordered_set<Coord> PawnCell::getReservedSteps() const{
+    std::unordered_set<Coord> moves;
     
     if (colour_ == Colour::BLACK) {
         if(coord_.row > 0){
-            moves.push_back({coord_.row - 1, coord_.col});
+            moves.insert({coord_.row - 1, coord_.col});
         }
         if(coord_.row == 6) {
-            moves.push_back({coord_.row - 2, coord_.col});
+            moves.insert({coord_.row - 2, coord_.col});
         }
     }
     else {
         if(coord_.row < 7){
-            moves.push_back({coord_.row + 1, coord_.col});
+            moves.insert({coord_.row + 1, coord_.col});
         }
         if(coord_.row == 1) {
-            moves.push_back({coord_.row + 2, coord_.col});
+            moves.insert({coord_.row + 2, coord_.col});
         }
     }
     return moves;
 }
 
-const std::string& PawnCell::Name() const {
+std::string_view PawnCell::Name() const {
     return PawnName;
 }
 

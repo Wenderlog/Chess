@@ -1,4 +1,3 @@
-//
 //  Pawn_Cell.h
 //  Chess
 //
@@ -9,7 +8,7 @@
 
 #include "Cell.h"
 
-constexpr std::string PawnName = "Pawn";
+constexpr std::string_view PawnName = "Pawn";
 
 /*!
  \class PawnCell
@@ -38,27 +37,27 @@ public:
     /*!
      \brief Retrieves the list of cells attacked by the pawn.
      \details The pawn attacks diagonally forward based on its color and current position.
-     \return A vector of coordinates representing the cells the pawn can attack.
+     \return A set of coordinates representing the cells the pawn can attack.
      */
     
-    std::vector<Coord> getHits() const override;
+    std::unordered_set<Coord> getHits() const override;
 
     /*!
      \brief Returns the name of the piece.
      \details For this class, it always returns "Pawn".
-     \return The name of the piece as a string.
+     \return The name of the piece as a `std::string_view`.
      */
     
-    const std::string& Name() const override;
+    std::string_view Name() const override;
 
     /*!
      \brief Retrieves the list of valid moves for the pawn.
      \details Calculates the pawn's possible moves based on its position, including a double move
      when the pawn is in its initial position and valid single forward moves.
-     \return A vector of coordinates representing the cells the pawn can move to.
+     \return A set of coordinates representing the cells the pawn can move to.
      */
     
-    std::vector<Coord> getReservedSteps() const override;
+    std::unordered_set<Coord> getReservedSteps() const override;
 
     /*!
      \brief Returns the symbol representing the pawn on the board.

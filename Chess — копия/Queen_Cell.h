@@ -1,4 +1,3 @@
-//
 //  Queen_Cell.h
 //  Chess
 //
@@ -9,7 +8,7 @@
 
 #include "Cell.h"
 
-constexpr std::string QueenName = "Queen";
+constexpr std::string_view QueenName = "Queen";
 
 /*!
  \class QueenCell
@@ -27,49 +26,43 @@ public:
      \param coord The initial coordinates of the queen on the board.
      \param colour The color of the queen (white or black).
      */
-    
     QueenCell(Coord coord, Colour colour);
 
     /*!
      \brief Returns the color of the queen.
      \return The color of the queen as a `Colour` enumeration.
      */
-    
     Colour getColour() const override;
 
     /*!
      \brief Retrieves the list of cells attacked by the queen.
      \details Calculates all cells the queen can attack, which includes any square along its
      vertical, horizontal, and diagonal paths until blocked by another piece or the edge of the board.
-     \return A vector of coordinates representing the cells the queen can attack.
+     \return A set of coordinates representing the cells the queen can attack.
      */
-    
-    std::vector<Coord> getHits() const override;
+    std::unordered_set<Coord> getHits() const override;
 
     /*!
      \brief Returns the name of the piece.
      \details For this class, it always returns "Queen".
-     \return The name of the piece as a string.
+     \return The name of the piece as a `std::string_view`.
      */
-    
-    const std::string& Name() const override;
+    std::string_view Name() const override;
 
     /*!
      \brief Retrieves the list of valid moves for the queen.
      \details Determines the queen's possible moves based on its position on the board,
      following its movement rules: unlimited squares vertically, horizontally, or diagonally
-     until encountering an obstacle.
-     \return A vector of coordinates representing the cells the queen can move to.
+     until encountering an obstacle (another piece or the edge of the board).
+     \return A set of coordinates representing the cells the queen can move to.
      */
-    
-    std::vector<Coord> getReservedSteps() const override;
+    std::unordered_set<Coord> getReservedSteps() const override;
 
     /*!
      \brief Returns the symbol representing the queen on the board.
      \details The symbol is 'Q' for a white queen and 'q' for a black queen.
      \return The character symbol for the queen.
      */
-    
     char getSymbol() const override;
 
 protected:

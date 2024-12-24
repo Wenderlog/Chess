@@ -11,15 +11,15 @@ Colour EmptyCell::getColour() const {
     return Colour::WHITE;
 }
 
-std::vector<Coord> EmptyCell::getReservedSteps() const{
+std::unordered_set<Coord> EmptyCell::getReservedSteps() const{
     return {};
 }
 
-std::vector<Coord> EmptyCell::getHits() const {
+std::unordered_set<Coord> EmptyCell::getHits() const {
     return {};
 }
 
-const std::string& EmptyCell::Name() const {
+std::string_view EmptyCell::Name() const {
     return EmptyName;
 }
 

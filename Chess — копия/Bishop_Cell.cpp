@@ -13,28 +13,28 @@ Colour BishopCell::getColour() const {
     return colour_;
 }
 
-std::vector<Coord> BishopCell::getReservedSteps() const {
-    std::vector<Coord> moves;
+std::unordered_set<Coord> BishopCell::getReservedSteps() const {
+    std::unordered_set<Coord> moves;
     moves.reserve(13);
     
     for(int i = 1; i < 8; ++i) {
         
-        if(coord_.row + i < 8 && coord_.col + i < 8) moves.push_back({coord_.row + i, coord_. col + i});
+        if(coord_.row + i < 8 && coord_.col + i < 8) moves.insert({coord_.row + i, coord_. col + i});
         
-        if(coord_.row >= i && coord_.col  >= i) moves.push_back({coord_.row - i, coord_.col - i});
+        if(coord_.row >= i && coord_.col  >= i) moves.insert({coord_.row - i, coord_.col - i});
         
-        if(coord_.col + i < 8  && coord_.row >= i) moves.push_back({coord_.row - i, coord_. col + i});
+        if(coord_.col + i < 8  && coord_.row >= i) moves.insert({coord_.row - i, coord_. col + i});
         
-        if(coord_.col >= i  && coord_.row + i < 8) moves.push_back({coord_.row + i, coord_.col - i});
+        if(coord_.col >= i  && coord_.row + i < 8) moves.insert({coord_.row + i, coord_.col - i});
     }
     return moves;
 }
 
-std::vector<Coord> BishopCell::getHits() const {
+std::unordered_set<Coord> BishopCell::getHits() const {
     return getReservedSteps();
 }
 
-const std::string& BishopCell::Name() const {
+std::string_view BishopCell::Name() const {
     return BishopName;
 }
 

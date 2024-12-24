@@ -1,4 +1,3 @@
-//
 //  Rook_Cell.h
 //  Chess
 //
@@ -9,7 +8,7 @@
 #include "Cell.h"
 #include <algorithm>
 
-constexpr std::string RookName = "Rook";
+constexpr std::string_view RookName = "Rook";
 
 /*!
  \class RookCell
@@ -34,26 +33,29 @@ public:
 
     /*!
      \brief Retrieves the list of cells attacked by the rook.
-     \return A vector of coordinates representing the cells under attack by the rook.
+     \details The rook attacks all cells in a straight line horizontally and vertically, stopping at the first occupied cell or the edge of the board.
+     \return A set of coordinates representing the cells the rook can attack.
      */
-    std::vector<Coord> getHits() const override;
+    std::unordered_set<Coord> getHits() const override;
 
     /*!
      \brief Retrieves the list of valid moves for the rook.
-     \return A vector of coordinates representing the cells the rook can move to.
+     \details The rook can move horizontally and vertically, and the list of valid moves is calculated by checking all possible cells along these directions,
+     stopping at the first occupied cell or the edge of the board.
+     \return A set of coordinates representing the cells the rook can move to.
      */
-    std::vector<Coord> getReservedSteps() const override;
+    std::unordered_set<Coord> getReservedSteps() const override;
 
     /*!
      \brief Returns the name of the piece.
      \details For this class, it always returns "Rook".
-     \return The name of the piece as a string.
+     \return The name of the piece as a `std::string_view`.
      */
-    const std::string& Name() const override;
+    std::string_view Name() const override;
 
     /*!
      \brief Returns the symbol representing the rook on the board.
-     \details The symbol depends on the color: 'R' for a white rook and 'r' for a black rook.
+     \details The symbol is 'R' for a white rook and 'r' for a black rook.
      \return The character symbol for the rook.
      */
     char getSymbol() const override;

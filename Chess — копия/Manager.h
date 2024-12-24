@@ -1,4 +1,3 @@
-//
 //  Manager.h
 //  Chess
 //
@@ -33,7 +32,6 @@ public:
      * \param message A string representing the move in algebraic notation (e.g., "e2 e4").
      * \return A pair of coordinates representing the move (from, to). If invalid, returns an empty pair.
      */
-    
     std::pair<Coord, Coord> WordToCoord(const std::vector<std::vector<std::shared_ptr<Cell>>>& board, const std::string& message);
 
     /*!
@@ -41,7 +39,6 @@ public:
      * \param square A string representing the square in standard chess notation.
      * \return A `Coord` structure representing the corresponding row and column on the board.
      */
-    
     Coord ConvertToCoord(const std::string& square);
 
     /*!
@@ -49,7 +46,5 @@ public:
      * \param coord The coordinate to validate.
      * \return `true` if the coordinate is valid (within 0-7 for both row and column), otherwise `false`.
      */
-    
     bool IsValidCoord(const Coord& coord);
 };
-

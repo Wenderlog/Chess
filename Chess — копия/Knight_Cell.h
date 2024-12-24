@@ -8,7 +8,7 @@
 #pragma once
 #include "Cell.h"
 
-constexpr std::string KnightName = "Knight";
+constexpr std::string_view KnightName = "Knight";
 
 /*!
  \class KnightCell
@@ -44,7 +44,7 @@ public:
      \return A vector of coordinates representing the cells the knight attacks.
      */
     
-    std::vector<Coord> getHits() const override;
+    std::unordered_set<Coord> getHits() const override;
 
     /*!
      \brief Returns the name of the piece.
@@ -52,7 +52,7 @@ public:
      \return The name of the piece as a string.
      */
     
-    const std::string& Name() const override;
+    std::string_view Name() const override;
 
     /*!
      \brief Retrieves the list of valid moves for the knight.
@@ -62,7 +62,7 @@ public:
      \return A vector of coordinates representing the cells the knight can move to.
      */
     
-    std::vector<Coord> getReservedSteps() const override;
+    std::unordered_set<Coord> getReservedSteps() const override;
 
     /*!
      \brief Returns the symbol representing the knight on the board.

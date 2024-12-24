@@ -16,7 +16,7 @@
  */
 
 constexpr char Symbol = '.'; ///< The symbol representing an empty cell.
-constexpr std::string EmptyName = "Empty"; ///< The name of the empty cell.
+constexpr std::string_view EmptyName = "Empty"; ///< The name of the empty cell.
 
 class EmptyCell : public Cell {
 public:
@@ -35,7 +35,7 @@ public:
      * \return std::vector<Coord> An empty vector indicating no cells are under attack.
      */
     
-    std::vector<Coord> getHits() const override;
+    std::unordered_set<Coord> getHits() const override;
 
     /*!
      * \brief Returns the name of the empty cell.
@@ -43,7 +43,7 @@ public:
      * \return std::string The name of the empty cell.
      */
     
-    const std::string& Name() const override;
+    std::string_view Name() const override;
 
     // /*!
     //  * \brief Creates a copy of the empty cell.
@@ -58,7 +58,7 @@ public:
      * \return std::vector<Coord> An empty vector as no moves are reserved for the empty cell.
      */
     
-    std::vector<Coord> getReservedSteps() const override;
+    std::unordered_set<Coord> getReservedSteps() const override;
 
     /*!
      * \brief Returns the symbol for the empty cell.
