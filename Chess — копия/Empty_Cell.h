@@ -45,13 +45,6 @@ public:
     
     std::string_view Name() const override;
 
-    // /*!
-    //  * \brief Creates a copy of the empty cell.
-    //  * \details This method could be used for cloning an empty cell.
-    //  * The method is not implemented for the empty cell as it has no specific logic.
-    //  */
-    // Cell* Copy() const override;
-
     /*!
      * \brief Returns the reserved steps for the empty cell.
      * \details As an empty cell does not contain any piece, there are no possible moves associated with it.
