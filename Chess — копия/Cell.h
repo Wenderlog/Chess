@@ -39,7 +39,7 @@ class hash<Coord> {
  public:
   size_t operator()(Coord coord) const;
 };
-}  // namespace std
+} 
 
 /*! \brief Supports the basic functions of a regular cell in chess
  */
